@@ -36,7 +36,7 @@ syncTimer.Elapsed += async (sender, e) => await SyncFoldersAsync(syncService);
 syncTimer.AutoReset = true;
 syncTimer.Enabled = true;
 
-Console.WriteLine($"Synchronization started. Interval: {syncInterval / 1000} seconds");
+Console.WriteLine($"Synchronization started. Interval: {syncInterval} seconds");
 logService.Log("Synchronization started.");
 
 // Perform an initial synchronization before starting periodic synchronization
