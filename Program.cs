@@ -31,12 +31,12 @@ var logService = new LogService(logFilePath);
 var syncService = new SyncService(sourcePath, replicaPath, logService);
 
 // Set up a Timer to trigger synchronization at the specified interval
-var syncTimer = new Timer(syncInterval);
+var syncTimer = new Timer(syncInterval * 1000); // Convert seconds to milliseconds
 syncTimer.Elapsed += async (sender, e) => await SyncFoldersAsync(syncService);
 syncTimer.AutoReset = true;
 syncTimer.Enabled = true;
 
-Console.WriteLine($"Synchronization started. Interval: {syncInterval} seconds");
+Console.WriteLine($"Synchronization started. Interval: {syncInterval / 1000} seconds");
 logService.Log("Synchronization started.");
 
 // Perform an initial synchronization before starting periodic synchronization
